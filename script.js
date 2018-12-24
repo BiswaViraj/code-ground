@@ -1,0 +1,38 @@
+function outputUpdate() {
+    $("iframe").contents().find("html").html("<html><head><style type='text/css'>" + $("#cssPanel").val() + "</style></head><body>"
+    + $("#htmlPanel").val() + "</body></html>");
+
+    document.getElementById("outputPanel").contentWindow.eval($("#jsPanel").val());
+}
+
+
+
+
+$(".toggleButton").hover(function () {
+    $(this).addClass("highlightedButton")
+}, function () {
+    $(this).removeClass("highlightedButton")
+});
+
+$(".toggleButton").click(function () {
+    $(this).toggleClass("active")
+    $(this).removeClass("highlightedButton")
+
+    let panelId = $(this).attr("id") + "Panel";
+
+    $("#" + panelId).toggleClass("hidden");
+
+    let numberOfActivePanel = 4 - $(".hidden").length;
+    $(".panel").width(($(window).width() / numberOfActivePanel) - 6);
+});
+
+$(".panel").height(($(window).height() - $("header").height())- 15);
+$(".panel").width(($(window).width() / 2) - 6);
+
+outputUpdate();
+
+
+
+$("textarea").on("change keyup paste", function () {
+    outputUpdate();
+})
