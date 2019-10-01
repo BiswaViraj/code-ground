@@ -5,9 +5,6 @@ function outputUpdate() {
     document.getElementById("outputPanel").contentWindow.eval($("#jsPanel").val());
 }
 
-
-
-
 $(".toggleButton").hover(function () {
     $(this).addClass("highlightedButton")
 }, function () {
@@ -30,8 +27,6 @@ $(".panel").height(($(window).height() - $("header").height())- 15);
 $(".panel").width(($(window).width() / 2) - 6);
 
 outputUpdate();
-
-
 
 $("textarea").on("change keyup paste", function () {
     outputUpdate();
