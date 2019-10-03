@@ -75,3 +75,9 @@ iframe {
 .hidden {
     display: none;
 }
+
+::placeholder{
+    text-align: center;
+    font-size: 30px;
+    opacity: 0.5;
+}
